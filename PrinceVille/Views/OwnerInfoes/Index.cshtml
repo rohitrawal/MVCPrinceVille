@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PrinceVille.Models.OwnerInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ownerCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ownerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ownerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Block)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlatNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomePhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ownerEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ownerPhoto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ownerCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ownerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ownerLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Block)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlatNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomePhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ownerEmail)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.ownerPhoto)*@
+            @if (item.ownerPhoto != null)
+            {
+                var base64 = Convert.ToBase64String(item.ownerPhoto);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgSrc" height="100px" width="100px" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ownerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ownerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ownerId })
+        </td>
+    </tr>
+}
+
+</table>

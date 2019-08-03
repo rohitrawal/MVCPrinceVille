@@ -1,0 +1,96 @@
+﻿@model PrinceVille.Models.OwnerInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OwnerInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ownerCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ownerCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ownerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ownerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ownerLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ownerLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Block)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Block)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlatNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlatNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ownerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ownerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ownerPhoto)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.ownerPhoto)*@
+            @if (Model.ownerPhoto != null)
+            {
+                var base64 = Convert.ToBase64String(Model.ownerPhoto);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgSrc" height="100px" width="100px" />
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ownerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
